@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 Congratulations, Caroline!</title>
+    <meta name="description" content="A special graduation surprise for the most amazing Caroline.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Preloader / Entry Screen -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="gift-box" id="giftBox">
+                <div class="gift-lid" id="giftLid">
+                    <div class="gift-bow"></div>
+                </div>
+                <div class="gift-body">
+                    <div class="gift-ribbon-v"></div>
+                    <div class="gift-ribbon-h"></div>
+                </div>
+            </div>
+            <p class="preloader-text">Hey Caroline, I have a surprise for you...</p>
+            <button class="open-btn" id="openBtn">
+                <span class="btn-text">Tap to Open</span>
+                <span class="btn-sparkle">✨</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="main-content hidden">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-particles" id="heroParticles"></div>
+            <div class="hero-content">
+                <div class="grad-cap-animation">
+                    <div class="grad-cap">🎓</div>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line title-line-1">Congratulations</span>
+                    <span class="title-line title-line-2 name-highlight">Caroline</span>
+                </h1>
+                <p class="hero-subtitle">Bachelor of Science in Hospitality Management</p>
+                <div class="hero-badge">Class of 2026</div>
+                <div class="hero-divider">
+                    <span class="divider-star">⭐</span>
+                </div>
+                <p class="hero-message">I'm so incredibly proud of you, my love</p>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- Journey Timeline Section -->
+        <section id="journey" class="journey-section">
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h2 class="section-title">Your Beautiful Journey</h2>
+                <p class="section-subtitle">Every step led to this incredible moment</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-emoji">🌱</div>
+                        <h3>The Beginning</h3>
+                        <p>You started this incredible journey with a dream of making people feel welcome and creating unforgettable experiences. I remember how excited and determined you were when you began your Hospitality Management degree.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-emoji">📚</div>
+                        <h3>The Late Nights</h3>
+                        <p>All those late-night study sessions, the mountains of notes on hotel operations, event planning, and food service management — you powered through every single one. The coffee-fueled cramming sessions were worth it!</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-emoji">💪</div>
+                        <h3>The Challenges</h3>
+                        <p>There were tough exams, stressful presentations, and moments of doubt. But Caroline, you faced every challenge with grace, resilience, and that beautiful smile that never fades.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-emoji">🎓</div>
+                        <h3>The Triumph</h3>
+                        <p>And now, here you are — a GRADUATE with a BS in Hospitality Management! You turned your dreams into reality, and the hospitality world is so lucky to have you. I couldn't be more proud.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reasons Section -->
+        <section id="reasons" class="reasons-section">
+            <div class="section-header">
+                <span class="section-icon">💝</span>
+                <h2 class="section-title">Why I'm So Proud of You</h2>
+                <p class="section-subtitle">Click each card to reveal</p>
+            </div>
+            <div class="reasons-grid">
+                <div class="reason-card" data-reason="Your determination inspires me every single day, Caroline. You never settle for less than your best, and it shows in everything you do.">
+                    <div class="reason-front">
+                        <span class="reason-number">01</span>
+                        <span class="reason-icon">🌟</span>
+                        <span class="reason-hint">Tap me</span>
+                    </div>
+                    <div class="reason-back">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="reason-card" data-reason="You have this incredible gift of making everyone around you feel special and cared for — the perfect hospitality queen.">
+                    <div class="reason-front">
+                        <span class="reason-number">02</span>
+                        <span class="reason-icon">💫</span>
+                        <span class="reason-hint">Tap me</span>
+                    </div>
+                    <div class="reason-back">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="reason-card" data-reason="Your passion for learning and growing is one of the most beautiful things about you. You never stop reaching higher.">
+                    <div class="reason-front">
+                        <span class="reason-number">03</span>
+                        <span class="reason-icon">🔥</span>
+                        <span class="reason-hint">Tap me</span>
+                    </div>
+                    <div class="reason-back">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="reason-card" data-reason="You balance everything so gracefully — school, life, us — and you absolutely shine in all of it. You're incredible.">
+                    <div class="reason-front">
+                        <span class="reason-number">04</span>
+                        <span class="reason-icon">✨</span>
+                        <span class="reason-hint">Tap me</span>
+                    </div>
+                    <div class="reason-back">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="reason-card" data-reason="You prove every day that warmth, kindness, and intelligence go hand in hand. The hospitality industry doesn't know how lucky it is to have you.">
+                    <div class="reason-front">
+                        <span class="reason-number">05</span>
+                        <span class="reason-icon">💎</span>
+                        <span class="reason-hint">Tap me</span>
+                    </div>
+                    <div class="reason-back">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="reason-card" data-reason="Watching you achieve your goals makes me fall in love with you all over again. You're extraordinary, Caroline.">
+                    <div class="reason-front">
+                        <span class="reason-number">06</span>
+                        <span class="reason-icon">💖</span>
+                        <span class="reason-hint">Tap me</span>
+                    </div>
+                    <div class="reason-back">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Letter Section -->
+        <section id="letter" class="letter-section">
+            <div class="letter-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <div class="letter-container">
+                <div class="letter-envelope" id="letterEnvelope">
+                    <div class="envelope-body">
+                        <span class="envelope-heart">💌</span>
+                        <p class="envelope-text">A letter for you, Caroline</p>
+                        <button class="read-letter-btn" id="readLetterBtn">Open Letter</button>
+                    </div>
+                </div>
+                <div class="letter-paper hidden" id="letterPaper">
+                    <div class="letter-close" id="letterClose">✕</div>
+                    <div class="letter-content">
+                        <p class="letter-greeting">My Dearest Caroline,</p>
+                        <p>Today is YOUR day, and I want you to know just how incredibly special you are to me.</p>
+                        <p>From the very first day you told me about your dream to pursue Hospitality Management, I knew you were going to be amazing at it. You have this rare, natural gift — the way you light up a room, make everyone feel welcome, and pour your heart into everything you do. That's not something you learn from a textbook, Caroline. That's who you are.</p>
+                        <p>I watched you work so hard through every semester — the countless hours studying, the group projects, the practicals, the exams that kept you up at night. I watched you push through moments of doubt, exhaustion, and stress, and come out stronger every single time. You never gave up. Not once.</p>
+                        <p>And now look at you — a proud graduate with a Bachelor of Science in Hospitality Management. You turned your dreams into a beautiful reality, and I couldn't be more proud to call you mine.</p>
+                        <p>The world of hospitality is about creating moments that people remember forever. And Caroline, that's exactly what you do — in your career, in your friendships, and in my life. Every moment with you is one I'll treasure.</p>
+                        <p>I am so excited for your future. I know you're going to do extraordinary things, touch so many lives, and build the incredible career you've always dreamed of. And I'll be right here, cheering you on, every step of the way.</p>
+                        <p>Congratulations, my love. You deserve all of this and so much more.</p>
+                        <p class="letter-closing">With all my love, forever and always,</p>
+                        <p class="letter-signature">Your Biggest Fan 💕</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Section -->
+        <section id="future" class="future-section">
+            <div class="section-header light">
+                <span class="section-icon">🚀</span>
+                <h2 class="section-title">The Future is Yours, Caroline</h2>
+                <p class="section-subtitle">And I can't wait to see where you'll go</p>
+            </div>
+            <div class="future-content">
+                <div class="future-wishes">
+                    <div class="wish-item" style="--delay: 0">
+                        <div class="wish-glow"></div>
+                        <span class="wish-icon">🏨</span>
+                        <p>May you manage the finest hotels and create experiences people will never forget</p>
+                    </div>
+                    <div class="wish-item" style="--delay: 1">
+                        <div class="wish-glow"></div>
+                        <span class="wish-icon">🌍</span>
+                        <p>May your career take you to the most beautiful places around the world</p>
+                    </div>
+                    <div class="wish-item" style="--delay: 2">
+                        <div class="wish-glow"></div>
+                        <span class="wish-icon">💡</span>
+                        <p>May your brilliance and warmth light up every room you walk into</p>
+                    </div>
+                    <div class="wish-item" style="--delay: 3">
+                        <div class="wish-glow"></div>
+                        <span class="wish-icon">🌈</span>
+                        <p>May happiness and success follow you in everything you do</p>
+                    </div>
+                    <div class="wish-item" style="--delay: 4">
+                        <div class="wish-glow"></div>
+                        <span class="wish-icon">💕</span>
+                        <p>And may you always know how deeply, completely, and endlessly you are loved</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Section -->
+        <section id="finale" class="finale-section">
+            <div class="finale-content">
+                <div class="finale-hearts" id="finaleHearts"></div>
+                <h2 class="finale-title">
+                    <span class="dancing-text">Congratulations,</span>
+                    <span class="dancing-text highlight">Caroline!</span>
+                </h2>
+                <p class="finale-message">🎓 BS Hospitality Management — You're officially AMAZING 🎓</p>
+                <button class="celebrate-btn" id="celebrateBtn">
+                    🎉 Celebrate! 🎉
+                </button>
+                <p class="finale-love">Made with all my love, just for you 💖</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Background Music Toggle -->
+    <button class="music-toggle" id="musicToggle" title="Toggle Music">
+        <span class="music-icon">🎵</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
