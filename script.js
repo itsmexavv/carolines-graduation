@@ -250,80 +250,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== YouTube Music Player =====
-    // NIKI - You'll Be In My Heart (with fallbacks if official is blocked)
-    const videoIds = ['kY31Wn67b8U', 'yZD2pZj7LQ8', 'iITFk-UotJo'];
-    let currentVideoIdx = 0;
-    
+    // ===== HTML5 Audio Music Player =====
     const musicToggle = document.getElementById('musicToggle');
-    let ytPlayer = null;
     let musicPlaying = false;
-    let ytReady = false;
-
-    // YouTube API callback (must be defined before script loads)
-    window.onYouTubeIframeAPIReady = function() {
-        // Create a hidden container for the player
-        // Browsers block media in 1x1 iframes, so we use 300x300 but hide it via CSS
-        const playerDiv = document.createElement('div');
-        playerDiv.id = 'ytPlayer';
-        playerDiv.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:300px;height:300px;opacity:0;pointer-events:none;';
-        document.body.appendChild(playerDiv);
-
-        ytPlayer = new YT.Player('ytPlayer', {
-            height: '300',
-            width: '300',
-            videoId: videoIds[currentVideoIdx],
-            playerVars: {
-                autoplay: 0,
-                controls: 0,
-                rel: 0
-            },
-            events: {
-                onReady: function() {
-                    ytReady = true;
-                    ytPlayer.setVolume(100);
-                },
-                onError: function(event) {
-                    // If video cannot be embedded, try the next one
-                    currentVideoIdx++;
-                    if (currentVideoIdx < videoIds.length) {
-                        ytPlayer.loadVideoById(videoIds[currentVideoIdx]);
-                    } else {
-                        console.error("All fallback music tracks were blocked.");
-                    }
-                },
-                onStateChange: function(event) {
-                    // If video ends, replay
-                    if (event.data === YT.PlayerState.ENDED) {
-                        ytPlayer.playVideo();
-                    }
-                }
-            }
-        });
-    };
-
-    // Load YouTube IFrame API
-    const ytScript = document.createElement('script');
-    ytScript.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(ytScript);
+    
+    // Create audio element
+    const audioPlayer = new Audio('music.m4a');
+    audioPlayer.loop = true;
+    audioPlayer.volume = 1.0;
 
     if (musicToggle) {
         musicToggle.addEventListener('click', () => {
-            if (!ytReady) {
-                // Flash the button red if not ready yet
-                musicToggle.style.borderColor = 'red';
-                setTimeout(() => musicToggle.style.borderColor = 'rgba(255, 255, 255, 0.15)', 500);
-                return;
-            }
-
             if (musicPlaying) {
-                ytPlayer.pauseVideo();
+                audioPlayer.pause();
                 musicToggle.classList.remove('playing');
                 musicPlaying = false;
             } else {
-                ytPlayer.playVideo();
-                musicToggle.classList.add('playing');
-                musicPlaying = true;
+                // Play and catch any mobile autoplay restrictions
+                const playPromise = audioPlayer.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        musicToggle.classList.add('playing');
+                        musicPlaying = true;
+                    }).catch(error => {
+                        console.error("Audio playback failed:", error);
+                        // Flash red if playback failed
+                        musicToggle.style.borderColor = 'red';
+                        setTimeout(() => musicToggle.style.borderColor = 'rgba(255, 255, 255, 0.15)', 500);
+                    });
+                }
             }
         });
     }
