@@ -251,39 +251,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===== YouTube Music Player =====
-    // NIKI - You'll Be In My Heart
+    // NIKI - You'll Be In My Heart (with fallbacks if official is blocked)
+    const videoIds = ['kY31Wn67b8U', 'yZD2pZj7LQ8', 'iITFk-UotJo'];
+    let currentVideoIdx = 0;
+    
     const musicToggle = document.getElementById('musicToggle');
     let ytPlayer = null;
     let musicPlaying = false;
     let ytReady = false;
 
-    // Load YouTube IFrame API
-    const ytScript = document.createElement('script');
-    ytScript.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(ytScript);
-
-    // YouTube API callback
+    // YouTube API callback (must be defined before script loads)
     window.onYouTubeIframeAPIReady = function() {
         // Create a hidden container for the player
+        // Browsers block media in 1x1 iframes, so we use 300x300 but hide it via CSS
         const playerDiv = document.createElement('div');
         playerDiv.id = 'ytPlayer';
-        playerDiv.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;';
+        playerDiv.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:300px;height:300px;opacity:0;pointer-events:none;';
         document.body.appendChild(playerDiv);
 
         ytPlayer = new YT.Player('ytPlayer', {
-            height: '1',
-            width: '1',
-            videoId: 'kY31Wn67b8U', // NIKI - You'll Be In My Heart
+            height: '300',
+            width: '300',
+            videoId: videoIds[currentVideoIdx],
             playerVars: {
                 autoplay: 0,
-                loop: 1,
-                playlist: 'kY31Wn67b8U', // Required for loop
                 controls: 0,
+                rel: 0
             },
             events: {
                 onReady: function() {
                     ytReady = true;
-                    ytPlayer.setVolume(50);
+                    ytPlayer.setVolume(100);
+                },
+                onError: function(event) {
+                    // If video cannot be embedded, try the next one
+                    currentVideoIdx++;
+                    if (currentVideoIdx < videoIds.length) {
+                        ytPlayer.loadVideoById(videoIds[currentVideoIdx]);
+                    } else {
+                        console.error("All fallback music tracks were blocked.");
+                    }
                 },
                 onStateChange: function(event) {
                     // If video ends, replay
@@ -295,9 +302,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Load YouTube IFrame API
+    const ytScript = document.createElement('script');
+    ytScript.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(ytScript);
+
     if (musicToggle) {
         musicToggle.addEventListener('click', () => {
-            if (!ytReady) return;
+            if (!ytReady) {
+                // Flash the button red if not ready yet
+                musicToggle.style.borderColor = 'red';
+                setTimeout(() => musicToggle.style.borderColor = 'rgba(255, 255, 255, 0.15)', 500);
+                return;
+            }
 
             if (musicPlaying) {
                 ytPlayer.pauseVideo();
