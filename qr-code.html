@@ -143,26 +143,13 @@ for(let r=0;r<mc;r++){
     for(let c2=0;c2<mc;c2++){
         if(!qr.isDark(r,c2))continue;
         const x=off+c2*cell,y=off+r*cell;
-        const isFinder=(r<7&&c2<7)||(r<7&&c2>=mc-7)||(r>=mc-7&&c2<7);
-        ctx.fillStyle=isFinder?'#1a0a2e':'#c62368';
-        const g=cell*0.12;
+        ctx.fillStyle='#1a0a2e';
+        const g=cell*0.1;
         ctx.beginPath();
-        ctx.roundRect(x+g,y+g,cell-g*2,cell-g*2,cell*0.28);
+        ctx.roundRect(x+g,y+g,cell-g*2,cell-g*2,cell*0.22);
         ctx.fill();
     }
 }
-
-// Heart in center
-const cx=W/2,cy=W/2,s=cell*2.2;
-ctx.fillStyle='#fff';
-ctx.beginPath();ctx.arc(cx,cy,s+4,0,Math.PI*2);ctx.fill();
-ctx.fillStyle='#e74c8b';
-ctx.save();ctx.translate(cx,cy-s*0.15);
-ctx.beginPath();
-ctx.moveTo(0,s*0.45);
-ctx.bezierCurveTo(-s*0.1,s*0.1,-s*0.9,-s*0.35,0,-s*0.65);
-ctx.bezierCurveTo(s*0.9,-s*0.35,s*0.1,s*0.1,0,s*0.45);
-ctx.fill();ctx.restore();
 
 // Download
 function dl(){
