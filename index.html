@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
     <meta name="description" content="A special graduation surprise for the most amazing Caroline.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Preloader / Entry Screen -->
     <div id="preloader" class="preloader">
@@ -34,25 +38,40 @@
     <!-- Confetti Canvas -->
     <canvas id="confettiCanvas"></canvas>
 
+    <!-- Fireworks Canvas -->
+    <canvas id="fireworksCanvas"></canvas>
+
+    <!-- Shooting Stars -->
+    <div class="shooting-stars" id="shootingStars"></div>
+
     <!-- Floating Elements -->
     <div class="floating-elements" id="floatingElements"></div>
 
+    <!-- Easter Egg Tracker -->
+    <div class="egg-tracker hidden" id="eggTracker">
+        <span class="egg-icon-badge">🥚</span>
+        <span class="egg-score"><span id="eggCount">0</span>/7</span>
+        <span class="egg-label">secrets</span>
+    </div>
+
     <!-- Main Content -->
     <main id="mainContent" class="main-content hidden">
-        
-        <!-- Hero Section -->
+
+        <!-- ====== HERO SECTION ====== -->
         <section id="hero" class="hero-section">
             <div class="hero-particles" id="heroParticles"></div>
             <div class="hero-content">
                 <div class="grad-cap-animation">
-                    <div class="grad-cap">🎓</div>
+                    <!-- EASTER EGG #1: Click grad cap 5 times -->
+                    <div class="grad-cap easter-egg" id="easterCap" data-egg="cap">🎓</div>
                 </div>
                 <h1 class="hero-title">
                     <span class="title-line title-line-1">Congratulations</span>
                     <span class="title-line title-line-2 name-highlight">Caroline</span>
                 </h1>
                 <p class="hero-subtitle">Bachelor of Science in Hospitality Management</p>
-                <div class="hero-badge">Class of 2026</div>
+                <!-- EASTER EGG #2: Click badge -->
+                <div class="hero-badge easter-egg" id="easterBadge" data-egg="badge">Class of 2026</div>
                 <div class="hero-divider">
                     <span class="divider-star">⭐</span>
                 </div>
@@ -64,7 +83,48 @@
             </div>
         </section>
 
-        <!-- Journey Timeline Section -->
+        <!-- ====== COUNTDOWN TIMER ====== -->
+        <section id="countdown" class="countdown-section">
+            <div class="countdown-content">
+                <span class="section-icon">⏳</span>
+                <h2 class="section-title countdown-title">Every Second With You Counts</h2>
+                <p class="section-subtitle">Time since our journey began</p>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="time-block">
+                        <span class="time-number" id="countDays">0</span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block">
+                        <span class="time-number" id="countHours">0</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block">
+                        <span class="time-number" id="countMinutes">0</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block">
+                        <span class="time-number" id="countSeconds">0</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+                <p class="countdown-note">of loving you and counting ❤️</p>
+            </div>
+        </section>
+
+        <!-- ====== TYPING QUOTES ====== -->
+        <section id="quotes" class="quotes-section">
+            <div class="quotes-content">
+                <div class="quote-mark open">&ldquo;</div>
+                <p class="typing-quote" id="typingQuote"></p>
+                <span class="quote-cursor" id="quoteCursor">|</span>
+                <div class="quote-mark close">&rdquo;</div>
+            </div>
+        </section>
+
+        <!-- ====== JOURNEY TIMELINE ====== -->
         <section id="journey" class="journey-section">
             <div class="section-header">
                 <span class="section-icon">📖</span>
@@ -77,7 +137,9 @@
                     <div class="timeline-card">
                         <div class="timeline-emoji">🌱</div>
                         <h3>The Beginning</h3>
-                        <p>You started this incredible journey with a dream of making people feel welcome and creating unforgettable experiences. I remember how excited and determined you were when you began your Hospitality Management degree.</p>
+                        <p>You started this incredible journey with a dream of making people feel welcome and creating
+                            unforgettable experiences. I remember how excited and determined you were when you began
+                            your Hospitality Management degree.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -85,7 +147,9 @@
                     <div class="timeline-card">
                         <div class="timeline-emoji">📚</div>
                         <h3>The Late Nights</h3>
-                        <p>All those late-night study sessions, the mountains of notes on hotel operations, event planning, and food service management — you powered through every single one. The coffee-fueled cramming sessions were worth it!</p>
+                        <p>All those late-night study sessions, the mountains of notes on hotel operations, event
+                            planning, and food service management — you powered through every single one. The
+                            coffee-fueled cramming sessions were worth it!</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -93,7 +157,10 @@
                     <div class="timeline-card">
                         <div class="timeline-emoji">💪</div>
                         <h3>The Challenges</h3>
-                        <p>There were tough exams, stressful presentations, and moments of doubt. But Caroline, you faced every challenge with grace, resilience, and that beautiful smile that never fades.</p>
+                        <p>There were tough exams, stressful presentations, and moments of doubt. But Caroline, you
+                            faced every challenge with grace, resilience, and that beautiful smile that never fades.</p>
+                        <!-- EASTER EGG #3: Hidden star in timeline -->
+                        <span class="hidden-star easter-egg" id="easterStar" data-egg="star">⭐</span>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -101,13 +168,61 @@
                     <div class="timeline-card">
                         <div class="timeline-emoji">🎓</div>
                         <h3>The Triumph</h3>
-                        <p>And now, here you are — a GRADUATE with a BS in Hospitality Management! You turned your dreams into reality, and the hospitality world is so lucky to have you. I couldn't be more proud.</p>
+                        <p>And now, here you are — a GRADUATE with a BS in Hospitality Management! You turned your
+                            dreams into reality, and the hospitality world is so lucky to have you. I couldn't be more
+                            proud.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Reasons Section -->
+        <!-- ====== MEMORY GALLERY CAROUSEL ====== -->
+        <!-- HOW TO ADD YOUR PHOTOS:
+             Replace each <div class="photo-placeholder"> with:
+             <img src="your-photo.jpg" alt="description" class="gallery-img">
+        -->
+        <section id="gallery" class="gallery-section">
+            <div class="section-header">
+                <span class="section-icon">📸</span>
+                <h2 class="section-title">Our Beautiful Memories</h2>
+                <p class="section-subtitle">Swipe through our favorite moments together</p>
+            </div>
+            <div class="gallery-carousel" id="galleryCarousel">
+                <button class="gallery-nav gallery-prev" id="galleryPrev" aria-label="Previous photo">&#10094;</button>
+                <div class="gallery-viewport">
+                    <div class="gallery-track" id="galleryTrack">
+                        <div class="gallery-slide">
+                            <div class="gallery-frame">
+                                <img src="caroline-red.jpg" alt="Caroline in red" class="gallery-img">
+                                <p class="gallery-caption">Absolutely stunning — my beautiful Caroline 💕</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <div class="gallery-frame">
+                                <img src="caroline-grad.jpg" alt="Caroline graduation" class="gallery-img">
+                                <p class="gallery-caption">The graduate — so proud of you 🎓</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <div class="gallery-frame">
+                                <img src="caroline-red.jpg" alt="Caroline elegant" class="gallery-img mirror">
+                                <p class="gallery-caption">That smile that lights up my world 🌟</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide">
+                            <div class="gallery-frame">
+                                <img src="caroline-grad.jpg" alt="Caroline in toga" class="gallery-img">
+                                <p class="gallery-caption">My favorite person in the whole world 💖</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-next" id="galleryNext" aria-label="Next photo">&#10095;</button>
+            </div>
+            <div class="gallery-dots" id="galleryDots"></div>
+        </section>
+
+        <!-- ====== REASONS SECTION ====== -->
         <section id="reasons" class="reasons-section">
             <div class="section-header">
                 <span class="section-icon">💝</span>
@@ -115,70 +230,116 @@
                 <p class="section-subtitle">Click each card to reveal</p>
             </div>
             <div class="reasons-grid">
-                <div class="reason-card" data-reason="Your determination inspires me every single day, Caroline. You never settle for less than your best, and it shows in everything you do.">
+                <div class="reason-card"
+                    data-reason="Your determination inspires me every single day, Caroline. You never settle for less than your best, and it shows in everything you do.">
                     <div class="reason-front">
                         <span class="reason-number">01</span>
                         <span class="reason-icon">🌟</span>
                         <span class="reason-hint">Tap me</span>
                     </div>
-                    <div class="reason-back">
-                        <p></p>
-                    </div>
+                    <div class="reason-back"><p></p></div>
                 </div>
-                <div class="reason-card" data-reason="You have this incredible gift of making everyone around you feel special and cared for — the perfect hospitality queen.">
+                <div class="reason-card"
+                    data-reason="You have this incredible gift of making everyone around you feel special and cared for — the perfect hospitality queen.">
                     <div class="reason-front">
                         <span class="reason-number">02</span>
                         <span class="reason-icon">💫</span>
                         <span class="reason-hint">Tap me</span>
                     </div>
-                    <div class="reason-back">
-                        <p></p>
-                    </div>
+                    <div class="reason-back"><p></p></div>
                 </div>
-                <div class="reason-card" data-reason="Your passion for learning and growing is one of the most beautiful things about you. You never stop reaching higher.">
+                <div class="reason-card"
+                    data-reason="Your passion for learning and growing is one of the most beautiful things about you. You never stop reaching higher.">
                     <div class="reason-front">
                         <span class="reason-number">03</span>
                         <span class="reason-icon">🔥</span>
                         <span class="reason-hint">Tap me</span>
                     </div>
-                    <div class="reason-back">
-                        <p></p>
-                    </div>
+                    <div class="reason-back"><p></p></div>
                 </div>
-                <div class="reason-card" data-reason="You balance everything so gracefully — school, life, us — and you absolutely shine in all of it. You're incredible.">
+                <!-- EASTER EGG #4: Double-click this card -->
+                <div class="reason-card easter-egg" id="easterCard" data-egg="card"
+                    data-reason="You balance everything so gracefully — school, life, us — and you absolutely shine in all of it. You're incredible.">
                     <div class="reason-front">
                         <span class="reason-number">04</span>
                         <span class="reason-icon">✨</span>
                         <span class="reason-hint">Tap me</span>
                     </div>
-                    <div class="reason-back">
-                        <p></p>
-                    </div>
+                    <div class="reason-back"><p></p></div>
                 </div>
-                <div class="reason-card" data-reason="You prove every day that warmth, kindness, and intelligence go hand in hand. The hospitality industry doesn't know how lucky it is to have you.">
+                <div class="reason-card"
+                    data-reason="You prove every day that warmth, kindness, and intelligence go hand in hand. The hospitality industry doesn't know how lucky it is to have you.">
                     <div class="reason-front">
                         <span class="reason-number">05</span>
                         <span class="reason-icon">💎</span>
                         <span class="reason-hint">Tap me</span>
                     </div>
-                    <div class="reason-back">
-                        <p></p>
-                    </div>
+                    <div class="reason-back"><p></p></div>
                 </div>
-                <div class="reason-card" data-reason="Watching you achieve your goals makes me fall in love with you all over again. You're extraordinary, Caroline.">
+                <div class="reason-card"
+                    data-reason="Watching you achieve your goals makes me fall in love with you all over again. You're extraordinary, Caroline.">
                     <div class="reason-front">
                         <span class="reason-number">06</span>
                         <span class="reason-icon">💖</span>
                         <span class="reason-hint">Tap me</span>
                     </div>
-                    <div class="reason-back">
-                        <p></p>
+                    <div class="reason-back"><p></p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== POLAROID PHOTO REVEAL ====== -->
+        <!-- HOW TO ADD YOUR PHOTOS:
+             Replace each <div class="photo-placeholder polaroid-ph"> with:
+             <img src="your-photo.jpg" alt="description" class="polaroid-img">
+        -->
+        <section id="polaroids" class="polaroid-section">
+            <div class="section-header">
+                <span class="section-icon">🖼️</span>
+                <h2 class="section-title">Snapshots of Us</h2>
+                <p class="section-subtitle">Watch our memories develop as you scroll</p>
+            </div>
+            <div class="polaroid-grid">
+                <div class="polaroid-item" data-caption="The day I knew you were special 💫">
+                    <div class="polaroid-frame">
+                        <div class="polaroid-photo">
+                            <img src="caroline-red.jpg" alt="Caroline" class="polaroid-img">
+                            <div class="polaroid-develop"></div>
+                        </div>
+                        <p class="polaroid-caption"></p>
+                    </div>
+                </div>
+                <div class="polaroid-item" data-caption="Your smile lights up my world ☀️">
+                    <div class="polaroid-frame">
+                        <div class="polaroid-photo">
+                            <img src="caroline-grad.jpg" alt="Caroline graduation" class="polaroid-img">
+                            <div class="polaroid-develop"></div>
+                        </div>
+                        <p class="polaroid-caption"></p>
+                    </div>
+                </div>
+                <div class="polaroid-item" data-caption="Together, we're unstoppable 🚀">
+                    <div class="polaroid-frame">
+                        <div class="polaroid-photo">
+                            <img src="caroline-grad.jpg" alt="Caroline toga" class="polaroid-img">
+                            <div class="polaroid-develop"></div>
+                        </div>
+                        <p class="polaroid-caption"></p>
+                    </div>
+                </div>
+                <div class="polaroid-item" data-caption="My favorite human forever 💕">
+                    <div class="polaroid-frame">
+                        <div class="polaroid-photo">
+                            <img src="caroline-red.jpg" alt="Caroline beautiful" class="polaroid-img">
+                            <div class="polaroid-develop"></div>
+                        </div>
+                        <p class="polaroid-caption"></p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Love Letter Section -->
+        <!-- ====== LOVE LETTER + VOICE MESSAGE ====== -->
         <section id="letter" class="letter-section">
             <div class="letter-bg-shapes">
                 <div class="shape shape-1"></div>
@@ -186,32 +347,87 @@
                 <div class="shape shape-3"></div>
             </div>
             <div class="letter-container">
+                <!-- EASTER EGG #5: Click envelope heart 3 times -->
                 <div class="letter-envelope" id="letterEnvelope">
                     <div class="envelope-body">
-                        <span class="envelope-heart">💌</span>
+                        <span class="envelope-heart easter-egg" id="easterHeart" data-egg="heart">💌</span>
                         <p class="envelope-text">A letter for you, Caroline</p>
                         <button class="read-letter-btn" id="readLetterBtn">Open Letter</button>
+                        <!-- Voice Message Button -->
+                        <button class="voice-btn" id="voiceBtn" title="Play Voice Message">
+                            <span class="voice-icon">🎤</span>
+                            <span class="voice-label">Hear My Voice</span>
+                        </button>
                     </div>
                 </div>
                 <div class="letter-paper hidden" id="letterPaper">
                     <div class="letter-close" id="letterClose">✕</div>
                     <div class="letter-content">
-                        <p class="letter-greeting">My Dearest Caroline,</p>
-                        <p>Today is YOUR day, and I want you to know just how incredibly special you are to me.</p>
-                        <p>From the very first day you told me about your dream to pursue Hospitality Management, I knew you were going to be amazing at it. You have this rare, natural gift — the way you light up a room, make everyone feel welcome, and pour your heart into everything you do. That's not something you learn from a textbook, Caroline. That's who you are.</p>
-                        <p>I watched you work so hard through every semester — the countless hours studying, the group projects, the practicals, the exams that kept you up at night. I watched you push through moments of doubt, exhaustion, and stress, and come out stronger every single time. You never gave up. Not once.</p>
-                        <p>And now look at you — a proud graduate with a Bachelor of Science in Hospitality Management. You turned your dreams into a beautiful reality, and I couldn't be more proud to call you mine.</p>
-                        <p>The world of hospitality is about creating moments that people remember forever. And Caroline, that's exactly what you do — in your career, in your friendships, and in my life. Every moment with you is one I'll treasure.</p>
-                        <p>I am so excited for your future. I know you're going to do extraordinary things, touch so many lives, and build the incredible career you've always dreamed of. And I'll be right here, cheering you on, every step of the way.</p>
-                        <p>Congratulations, my love. You deserve all of this and so much more.</p>
-                        <p class="letter-closing">With all my love, forever and always,</p>
-                        <p class="letter-signature">Your Biggest Fan 💕</p>
+                        <p class="letter-greeting">Hi, Baby! 💕</p>
+                        <p>Today is your graduation day! Sobrang proud ako sa'yo. Sa dami ng pinagdaanan mo, baby, andiyan ka pa rin — 'di ka sumuko.</p>
+                        <p>Sorry, baby, kasi minsan pasaway po ako, parang bata. Kamo nga, 'no? Hahaha. 😅</p>
+                        <p>Thank you, baby, kasi nakilala kita. Ikaw 'yung nagpapaalala sa'kin na 'di ako mag-isa. Andyan ka palagi — para alagaan ako pag may masakit sa'kin, para suwayin ako pag makulit ako, may karamay pag malungkot ako, at deep talks — nasa'yo na lahat.</p>
+                        <p>Baby ko, maganda ka, sobrang bait, at masipag. 🌟</p>
+                        <p>Congratulations po, baby ko! I love you! 💕</p>
+                        <p class="letter-closing">Sincerely yours,</p>
+                        <p class="letter-signature">Xavier 💕</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Future Section -->
+        <!-- ====== WISH LANTERNS ====== -->
+        <section id="lanterns" class="lanterns-section">
+            <div class="lanterns-sky" id="lanternsSky"></div>
+            <div class="section-header light">
+                <span class="section-icon">🏮</span>
+                <h2 class="section-title">Wish Lanterns for You</h2>
+                <p class="section-subtitle">Tap each lantern to release a wish into the sky</p>
+            </div>
+            <div class="lanterns-grid" id="lanternsGrid">
+                <div class="lantern" data-wish="May all your dreams come true, my beautiful Caroline 🌟">
+                    <div class="lantern-body">
+                        <div class="lantern-glow"></div>
+                        <div class="lantern-flame">🔥</div>
+                    </div>
+                    <span class="lantern-tap">Tap</span>
+                </div>
+                <div class="lantern" data-wish="May your career take you to the most beautiful places in the world 🌍">
+                    <div class="lantern-body">
+                        <div class="lantern-glow"></div>
+                        <div class="lantern-flame">🔥</div>
+                    </div>
+                    <span class="lantern-tap">Tap</span>
+                </div>
+                <div class="lantern" data-wish="May you always be surrounded by love and laughter 💕">
+                    <div class="lantern-body">
+                        <div class="lantern-glow"></div>
+                        <div class="lantern-flame">🔥</div>
+                    </div>
+                    <span class="lantern-tap">Tap</span>
+                </div>
+                <!-- EASTER EGG #6: Tap this lantern 3 times -->
+                <div class="lantern easter-egg" id="easterLantern" data-egg="lantern" data-wish="May happiness and success follow you wherever you go ✨">
+                    <div class="lantern-body">
+                        <div class="lantern-glow"></div>
+                        <div class="lantern-flame">🔥</div>
+                    </div>
+                    <span class="lantern-tap">Tap</span>
+                </div>
+                <div class="lantern" data-wish="May you never forget how deeply and endlessly you are loved 💖">
+                    <div class="lantern-body">
+                        <div class="lantern-glow"></div>
+                        <div class="lantern-flame">🔥</div>
+                    </div>
+                    <span class="lantern-tap">Tap</span>
+                </div>
+            </div>
+            <div class="wish-display" id="wishDisplay">
+                <p class="wish-text" id="wishText"></p>
+            </div>
+        </section>
+
+        <!-- ====== FUTURE SECTION ====== -->
         <section id="future" class="future-section">
             <div class="section-header light">
                 <span class="section-icon">🚀</span>
@@ -249,7 +465,7 @@
             </div>
         </section>
 
-        <!-- Final Section -->
+        <!-- ====== FINALE SECTION (Enhanced with Fireworks) ====== -->
         <section id="finale" class="finale-section">
             <div class="finale-content">
                 <div class="finale-hearts" id="finaleHearts"></div>
@@ -261,7 +477,8 @@
                 <button class="celebrate-btn" id="celebrateBtn">
                     🎉 Celebrate! 🎉
                 </button>
-                <p class="finale-love">Made with all my love, just for you 💖</p>
+                <!-- EASTER EGG #7: Click this text -->
+                <p class="finale-love easter-egg" id="easterLove" data-egg="love">Made with all my love, just for you 💖</p>
             </div>
         </section>
 
@@ -272,6 +489,17 @@
         <span class="music-icon">🎵</span>
     </button>
 
+    <!-- Secret Message Popup -->
+    <div class="secret-popup hidden" id="secretPopup">
+        <div class="secret-content">
+            <span class="secret-close" id="secretClose">✕</span>
+            <span class="secret-emoji" id="secretEmoji">🥚</span>
+            <p class="secret-title" id="secretTitle">Secret Found!</p>
+            <p class="secret-msg" id="secretMsg"></p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
